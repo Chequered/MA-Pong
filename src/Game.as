@@ -29,14 +29,23 @@ package
 			//remove all the gameObjects in the stagew
 			gameObjects.length = 0;
 			
-			var ball:Ball = new Ball(new ART_PLACEHOLDER_Ball());
-			gameObjects.push(ball);
-			addChild(ball);
+			//to create an gameobject follow these steps:
+			//instantiate the object with it's corresponding sprite
+			//add the object to the array
+			//give it a tag, this is used for collision
+			//add any objects you want to check it for collision to its collision lost
+			//add the object to the stage
 			
 			var bat:Bat = new Bat(new ART_PLACEHOLDER_BAT());
 			gameObjects.push(bat);
-			bat.addEventListener(KeyboardEvent.KEY_DOWN, bat.Controls);
+			bat.setObjectTag("bat");
 			addChild(bat);
+			
+			var ball:Ball = new Ball(new ART_PLACEHOLDER_Ball());
+			gameObjects.push(ball);
+			ball.setObjectTag("ball");
+			ball.addCollisionTarget(bat);
+			addChild(ball);
 			
 			addEventListener(Event.ENTER_FRAME, update);
 		}

@@ -28,14 +28,6 @@ package gameobjects
 			this.y += velocity.y;
 			if (this.bounceCooldownTime <= 0)
 			{
-				if (this.x >= 800)
-				{
-					hitBat();
-				}
-				if (this.x <= 0)
-				{
-					hitBat();
-				}
 				if (this.y >= stage.stageHeight)
 				{
 					hitBound();
@@ -51,9 +43,11 @@ package gameobjects
 			}
 		}
 		
-		public function hitBat():void
+		public function hitBat(_pos:Vector2D):void
 		{
-			this.velocity.x *= -1;
+			var angle = this.y - _pos.y
+			var angled = 15 / angle;
+			this.velocity.x *= -angled;
 			increaseSpeed();
 			this.bounceCooldownTime = bounceCooldown;
 		}
@@ -63,6 +57,17 @@ package gameobjects
 			this.velocity.y *= -1;
 			increaseSpeed();
 			this.bounceCooldownTime = bounceCooldown;
+		}
+		
+		override public function collide(_tag:String, _pos:Vector2D):void
+		{
+			if (_tag == "bat")
+			{
+				if (this.bounceCooldownTime <= 0)
+				{
+					hitBat(_pos);
+				}
+			}
 		}
 		
 		private function increaseSpeed():void
