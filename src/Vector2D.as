@@ -42,11 +42,10 @@
   Feel free to use this code as you wish, Have Fun!
   Please send bug reports && ( gripes || praise ) to nick[at]zambetti[dot]com
 ***************************************************************************************************************/
-package
-{
+package {
   
   
-public class Vector2
+public class Vector2D
 {
   // instance properties
   private var xValue:Number = 0;
