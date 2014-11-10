@@ -19,11 +19,19 @@ package gameobjects
 		{
 			this.x += velocity.x;
 			this.y += velocity.y;
-			if (this.x >= 700)
+			if (this.x >= 800)
 			{
 				hitBat();
 			}
-			if (this.y >= 600)
+			if (this.x <= 0)
+			{
+				hitBat();
+			}
+			if (this.y >= stage.stageHeight)
+			{
+				hitBound();
+			}
+			if (this.y <= 0)
 			{
 				hitBound();
 			}
@@ -37,6 +45,10 @@ package gameobjects
 		public function hitBound():void
 		{
 			this.velocity.y *= -1;
+		}
+		
+		private function increaseSpeed():void
+		{
 		}
 		
 	}

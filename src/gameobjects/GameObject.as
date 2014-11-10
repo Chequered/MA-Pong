@@ -36,7 +36,7 @@ package gameobjects
 		
 		public function testCollision():void
 		{
-			for (var i:int = 0; i < collisionTargets; i++)
+			for (var i:int = 0; i < collisionTargets.length; i++)
 			{
 				if (this.sprite.hitTestObject(collisionTargets[i]))
 				{
