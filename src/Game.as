@@ -46,6 +46,7 @@ package
 			ball.setObjectTag("ball");
 			ball.addCollisionTarget(bat);
 			addChild(ball);
+			ball.x = 200;
 			
 			addEventListener(Event.ENTER_FRAME, update);
 		}

@@ -43,7 +43,7 @@ package gameobjects
 			{
 				if (this.sprite.hitTestObject(collisionTargets[i]))
 				{
-					collide(collisionTargets[i].getObjectTag(), new Vector2D(collisionTargets[i].x, collisionTargets[i].y));
+					collide(collisionTargets[i].getObjectTag(), new Vector2D(collisionTargets[i].x, collisionTargets[i].y), collisionTargets[i]);
 				}
 			}
 		}
@@ -63,7 +63,7 @@ package gameobjects
 			return this.tag;
 		}
 		
-		public function collide(_tag:String, _pos:Vector2D):void
+		public function collide(_tag:String, _pos:Vector2D, _object:GameObject):void
 		{
 			
 		}

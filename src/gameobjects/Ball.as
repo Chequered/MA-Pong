@@ -17,8 +17,8 @@ package gameobjects
 		public function Ball(_sprite:MovieClip = null):void
 		{
 			super(_sprite);
-			this.velocity.x = 5;
-			this.velocity.y = 5;
+			this.velocity.x = 6;
+			this.velocity.y = 0;
 		}
 		
 		public override function update():void
@@ -28,6 +28,14 @@ package gameobjects
 			this.y += velocity.y;
 			if (this.bounceCooldownTime <= 0)
 			{
+				if (this.x <= 0)
+				{
+					this.velocity.x *= -1;
+				}
+				if (this.x >= stage.stageWidth)
+				{
+					this.velocity.x *= -1;
+				}
 				if (this.y >= stage.stageHeight)
 				{
 					hitBound();
@@ -43,14 +51,17 @@ package gameobjects
 			}
 		}
 		
-		public function hitBat(_pos:Vector2D):void
+		public function hitBat(_pos:Vector2D, _bat:GameObject):void
 		{
-			var angle = this.y - _pos.y
-			var angled = 15 / angle;
-			this.velocity.x *= -angled;
+			
+			var angle :Number = this.height / 2 * ( (this.y - _bat.y) / _bat.height / 2 );
+			this.velocity.x *= -1;
+			this.velocity.y = angle;
+			trace(angle);
 			increaseSpeed();
 			this.bounceCooldownTime = bounceCooldown;
 		}
+		
 		
 		public function hitBound():void
 		{
@@ -59,13 +70,13 @@ package gameobjects
 			this.bounceCooldownTime = bounceCooldown;
 		}
 		
-		override public function collide(_tag:String, _pos:Vector2D):void
+		override public function collide(_tag:String, _pos:Vector2D, _object:GameObject):void
 		{
 			if (_tag == "bat")
 			{
 				if (this.bounceCooldownTime <= 0)
 				{
-					hitBat(_pos);
+					hitBat(_pos, _object);
 				}
 			}
 		}
