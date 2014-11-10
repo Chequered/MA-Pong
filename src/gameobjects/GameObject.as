@@ -2,6 +2,7 @@ package gameobjects
 {
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	
 	//The base class for all the gameobject (or entities) in the game
 	
@@ -14,6 +15,7 @@ package gameobjects
 		protected var sprite : MovieClip;
 		protected var velocity : Vector2D;
 		protected var collisionTargets : Vector.<MovieClip>;
+		protected var stageRef:Stage;
 		
 		public function GameObject(_sprite:MovieClip = null):void
 		{

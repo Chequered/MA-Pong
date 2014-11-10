@@ -2,7 +2,9 @@ package
 {
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.events.Event;
+	import flash.events.KeyboardEvent;
 	
 	import gameobjects.Ball;
 	import gameobjects.Bat
@@ -31,8 +33,9 @@ package
 			gameObjects.push(ball);
 			addChild(ball);
 			
-			var bat:Bat = new Bat();
+			var bat:Bat = new Bat(new ART_PLACEHOLDER_BAT());
 			gameObjects.push(bat);
+			bat.addEventListener(KeyboardEvent.KEY_DOWN, bat.Controls);
 			addChild(bat);
 			
 			addEventListener(Event.ENTER_FRAME, update);

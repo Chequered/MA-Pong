@@ -1,6 +1,7 @@
 package
 {
 	import flash.display.Sprite;
+	import flash.events.KeyboardEvent;
 	/**
 	 * ...
 	 * @author Rob Verhoef & Daan Ruiter

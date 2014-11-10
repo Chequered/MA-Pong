@@ -1,6 +1,7 @@
 package gameobjects
 {
 	import flash.display.MovieClip;
+	import flash.display.Stage;
 	/**
 	 * ...
 	 * @author Rob Verhoef & Daan Ruiter
@@ -25,7 +26,6 @@ package gameobjects
 			super.update();
 			this.x += velocity.x;
 			this.y += velocity.y;
-			trace(stage.frameRate);
 			if (this.bounceCooldownTime <= 0)
 			{
 				if (this.x >= 800)
