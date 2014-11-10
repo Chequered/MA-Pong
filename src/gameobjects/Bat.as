@@ -1,6 +1,7 @@
-package  
+package gameobjects
 {
 	//imports
+	import flash.display.MovieClip;
 	import flash.events.KeyboardEvent;
 	import flash.events.Event;
 	
@@ -11,22 +12,23 @@ package
 	public class Bat extends GameObject
 	{
 		//vars
-		public var player1 : bat;
-		public var player2 : bat;
+		public var player1:BatPlaceholder;
+		public var player2:BatPlaceholder;
 		
 		public function Bat() 
 		{
+			trace("hallo");
 			//events
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, Controls);
 			
 			//adds the bat of player1 to the game
-			player1 = new bat;
+			player1 = new BatPlaceholder();
 			player1.x = stage.stageWidth / 8;
 			player1.y = stage.stageHeight / 5;
 			addChild(player1);
 			
 			//adds the bat of player2 to the game
-			player2 = new bat;
+			player2 = new BatPlaceholder();
 			player2.x = stage.stageWidth / -8;
 			player2.y = stage.stageHeight / 5;
 			addChild(player2);
@@ -44,7 +46,7 @@ package
 			}
 			
 			//down 
-			if (e.keyCode == 40 && player1.x < stage.stageWidth)
+			if (e.keyCode == 40 && player1.x > 0)
 			{
 				player1.x -= 1;
 			}
@@ -56,7 +58,7 @@ package
 			}
 			
 			//S
-			if (e.keyCode == 83 && player2.x < stage.stageWidth)
+			if (e.keyCode == 83 && player2.x > 0)
 			{
 				player1.x -= 1;
 			}
