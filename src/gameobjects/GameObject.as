@@ -15,10 +15,10 @@ package gameobjects
 		protected var velocity : Vector2D;
 		protected var collisionTargets : Vector.<MovieClip>;
 		
-		public function GameObject(_sprite:MovieClip = null, _startVelocity:Vector2D = null):void
+		public function GameObject(_sprite:MovieClip = null):void
 		{
 			this.sprite = _sprite;
-			this.velocity = _startVelocity;
+			this.velocity = new Vector2D();
 			addChild(sprite);
 			
 			init();
@@ -31,7 +31,7 @@ package gameobjects
 		
 		public function update():void
 		{
-			
+			testCollision();
 		}
 		
 		public function testCollision():void

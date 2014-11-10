@@ -12,12 +12,21 @@ package
 	 */
 	public class Game extends Sprite
 	{
+		static public var isRunning:Boolean;
 		
 		private var gameObjects:Vector.<GameObject> = new Vector.<GameObject>();
 		
 		public function Game() 
 		{
-			var ball:Ball = new Ball(new ART_PLACEHOLDER_Ball(), new Vector2D());
+			startGame();
+		}
+		
+		private function startGame():void
+		{
+			//remove all the gameObjects in the stagew
+			gameObjects.length = 0;
+			
+			var ball:Ball = new Ball(new ART_PLACEHOLDER_Ball());
 			gameObjects.push(ball);
 			addChild(ball);
 			
