@@ -5,6 +5,7 @@ package
 	import flash.events.Event;
 	
 	import gameobjects.Ball;
+	import gameobjects.Bat
 	import gameobjects.GameObject;
 	/**
 	 * ...
@@ -29,6 +30,10 @@ package
 			var ball:Ball = new Ball(new ART_PLACEHOLDER_Ball());
 			gameObjects.push(ball);
 			addChild(ball);
+			
+			var bat:Bat = new Bat();
+			gameObjects.push(bat);
+			addChild(bat);
 			
 			addEventListener(Event.ENTER_FRAME, update);
 		}
