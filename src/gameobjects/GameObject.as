@@ -14,8 +14,9 @@ package gameobjects
 	{
 		protected var sprite : MovieClip;
 		protected var velocity : Vector2D;
-		protected var collisionTargets : Vector.<MovieClip>;
+		protected var collisionTargets : Vector.<GameObject>;
 		protected var stageRef:Stage;
+		protected var tag:String = "object";
 		
 		public function GameObject(_sprite:MovieClip = null):void
 		{
@@ -28,7 +29,7 @@ package gameobjects
 		
 		private function init():void
 		{
-			collisionTargets = new Vector.<MovieClip>();
+			collisionTargets = new Vector.<GameObject>();
 		}
 		
 		public function update():void
@@ -42,15 +43,31 @@ package gameobjects
 			{
 				if (this.sprite.hitTestObject(collisionTargets[i]))
 				{
-					// collision logic
+					collide(collisionTargets[i].getObjectTag(), new Vector2D(collisionTargets[i].x, collisionTargets[i].y), collisionTargets[i]);
 				}
 			}
 		}
 		
-		public function addCollisionTarget(target:MovieClip):void
+		public function addCollisionTarget(target:GameObject):void
 		{
 			this.collisionTargets.push(target);
 		}
+		
+		public function setObjectTag(_tag:String):void
+		{
+			this.tag = _tag;
+		}
+		
+		public function getObjectTag():String
+		{
+			return this.tag;
+		}
+		
+		public function collide(_tag:String, _pos:Vector2D, _object:GameObject):void
+		{
+			
+		}
+		
 	}
 
 }

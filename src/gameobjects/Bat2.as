@@ -10,9 +10,9 @@ package gameobjects
 	 * ...
 	 * @author Rob Verhoef
 	 */
-	public class Bat extends GameObject
+	public class Bat2 extends GameObject
 	{	
-		public function Bat(_sprite:MovieClip = null) 
+		public function Bat2(_sprite:MovieClip = null) 
 		{
 			super(_sprite);
 		
@@ -23,7 +23,7 @@ package gameobjects
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, Controls);
-			this.y = stage.stageHeight/5;
+			this.y = stage.stageHeight/2;
 			this.x = stage.stageWidth/8;
 		}
 		
@@ -37,13 +37,13 @@ package gameobjects
 			//the bats move when the players press their respective buttons 
 			
 			//up
-			if (e.keyCode == 38 && this.y > 0)
+			if (e.keyCode == 87 && this.y > 0 + this.height/2)
 			{
 				this.y -= 10;
 			}
 			
 			//down 
-			if (e.keyCode == 40 && this.y < stage.stageHeight)
+			if (e.keyCode == 83 && this.y < stage.stageHeight - this.height/2)
 			{
 				this.y += 10;
 			}
