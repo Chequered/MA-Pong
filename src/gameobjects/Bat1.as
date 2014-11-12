@@ -8,7 +8,7 @@ package gameobjects
 	
 	/**
 	 * ...
-	 * @author Rob Verhoef
+	 * @author Rob Verhoef & Daan Ruiter
 	 */
 	public class Bat1 extends GameObject
 	{	
