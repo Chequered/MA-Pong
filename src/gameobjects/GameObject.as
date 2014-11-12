@@ -17,6 +17,7 @@ package gameobjects
 		protected var collisionTargets : Vector.<GameObject>;
 		protected var stageRef:Stage;
 		protected var tag:String = "object";
+		protected var isAnimationPlaying:Boolean;
 		
 		public function GameObject(_sprite:MovieClip = null):void
 		{
@@ -30,11 +31,21 @@ package gameobjects
 		private function init():void
 		{
 			collisionTargets = new Vector.<GameObject>();
+			this.sprite.gotoAndStop(0);
 		}
 		
 		public function update():void
 		{
 			testCollision();
+			if (isAnimationPlaying) 
+			{
+				trace(sprite.currentFrame);
+				if (sprite.currentFrame >= sprite.totalFrames)
+				{
+					isAnimationPlaying = false;
+					sprite.gotoAndStop(1);
+				}
+			}
 		}
 		
 		public function testCollision():void
@@ -63,9 +74,20 @@ package gameobjects
 			return this.tag;
 		}
 		
+		public function getSprite():Sprite
+		{
+			return sprite;
+		}
+		
 		public function collide(_tag:String, _pos:Vector2D, _object:GameObject):void
 		{
 			
+		}
+		
+		public function startAnimation()
+		{
+			sprite.play();
+			isAnimationPlaying = true;
 		}
 		
 	}
