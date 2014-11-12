@@ -3,6 +3,9 @@ package gameobjects
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.display.Stage;
+	import flash.events.Event;
+	import flash.net.drm.DRMVoucherDownloadContext;
+	import util.CustomEvent;
 	
 	//The base class for all the gameobject (or entities) in the game
 	
@@ -12,6 +15,8 @@ package gameobjects
 	 */
 	public class GameObject extends Sprite
 	{
+		public static const DESTROY_OBJECT:String = "destroy_object";
+		
 		protected var sprite : MovieClip;
 		protected var velocity : Vector2D;
 		protected var collisionTargets : Vector.<GameObject>;
@@ -81,13 +86,23 @@ package gameobjects
 		
 		public function collide(_tag:String, _pos:Vector2D, _object:GameObject):void
 		{
-			
+			//abstract
 		}
 		
 		public function startAnimation()
 		{
 			sprite.play();
 			isAnimationPlaying = true;
+		}
+		
+		public function onCollision(_object:GameObject):void
+		{
+			//abstract
+		}
+		
+		public function destroy(_object:GameObject):void
+		{
+			dispatchEvent(new CustomEvent(DESTROY_OBJECT, false, false, this));
 		}
 		
 	}

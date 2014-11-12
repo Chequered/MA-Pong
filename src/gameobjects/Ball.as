@@ -14,7 +14,7 @@ package gameobjects
 		private var speedToAddOnBoucne:Number = 1;
 		private var maxMovementSpeed:Number   = 8;
 		
-		private var bounceCooldown:Number = 2;
+		private var bounceCooldown:Number = 1.2;
 		private var bounceCooldownTime:Number = 0;
 		
 		private var locationTextField:TextField;
@@ -105,6 +105,10 @@ package gameobjects
 					hitBat(_pos, _object);
 					_object.startAnimation();
 				}
+			}
+			if (_tag == "castle")
+			{
+				_object.onCollision(this);
 			}
 		}
 		

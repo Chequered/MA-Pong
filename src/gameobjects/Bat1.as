@@ -14,6 +14,7 @@ package gameobjects
 	{	
 		
 		private var direction:int = 0;
+		private var castle:Castle;
 		
 		public function Bat1(_sprite:MovieClip = null) 
 		{
@@ -66,7 +67,6 @@ package gameobjects
 		public function Controls(e:KeyboardEvent):void
 		{
 			//the bats move when the players press their respective buttons 
-			
 			//up
 			if (e.keyCode == 38 && this.y > 0 + this.height/2)
 			{
