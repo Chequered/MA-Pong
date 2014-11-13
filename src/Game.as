@@ -40,6 +40,9 @@ package
 			//add any objects you want to check it for collision to its collision lost
 			//add the object to the stage
 			
+			var bg:MovieClip = new ART_Background();
+			addChild(bg);
+			
 			var bat1:Bat1 = new Bat1(new ART_PLACEHOLDER_BAT());
 			addGameObject(bat1);
 			bat1.setObjectTag("bat");

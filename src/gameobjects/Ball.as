@@ -12,9 +12,9 @@ package gameobjects
 	public class Ball extends GameObject
 	{
 		private var speedToAddOnBoucne:Number = 1;
-		private var maxMovementSpeed:Number   = 8;
+		private var maxMovementSpeed:Number   = 7.5;
 		
-		private var bounceCooldown:Number = 1.2;
+		private var bounceCooldown:Number = 0.8;
 		private var bounceCooldownTime:Number = 0;
 		
 		private var locationTextField:TextField;
