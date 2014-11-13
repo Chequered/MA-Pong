@@ -13,6 +13,8 @@ package gameobjects
 	public class Bat2 extends GameObject
 	{	
 		private var direction:int = 0;
+		private var castle:Castle;
+		
 		public function Bat2(_sprite:MovieClip = null) 
 		{
 			super(_sprite);
