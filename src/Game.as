@@ -6,10 +6,13 @@ package
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	
+	import util.CustomEvent;
 	import gameobjects.Ball;
 	import gameobjects.Bat1;
 	import gameobjects.Bat2;
 	import gameobjects.GameObject;
+	import gameobjects.Castle;
+	
 	/**
 	 * ...
 	 * @author Rob Verhoef & Daan Ruiter
@@ -20,7 +23,7 @@ package
 		
 		private var gameObjects:Vector.<GameObject> = new Vector.<GameObject>();
 		
-		public function Game() 
+		public function Game()
 		{
 			startGame();
 		}
@@ -37,25 +40,50 @@ package
 			//add any objects you want to check it for collision to its collision lost
 			//add the object to the stage
 			
+			var bg:MovieClip = new ART_Background();
+			addChild(bg);
+			
 			var bat1:Bat1 = new Bat1(new ART_PLACEHOLDER_BAT());
-			gameObjects.push(bat1);
+			addGameObject(bat1);
 			bat1.setObjectTag("bat");
+			bat1.addEventListener(Castle.CASTLE_DESTRUCT, descructCastle);
 			addChild(bat1);
 			var bat2:Bat2 = new Bat2(new ART_PLACEHOLDER_BAT());
-			gameObjects.push(bat2);
+			addGameObject(bat2);
 			bat2.setObjectTag("bat");
 			addChild(bat2);
 			
 			var ball:Ball = new Ball(new ART_PLACEHOLDER_Ball());
-			gameObjects.push(ball);
+			addGameObject(ball);
 			ball.setObjectTag("ball");
-			ball.addCollisionTarget(bat1);
-			ball.addCollisionTarget(bat2);
 			addChild(ball);
 			ball.x = 200;
 			
+			var castle1:Castle = new Castle(new ART_PLACEHOLDER_Castle());
+			addGameObject(castle1);
+			castle1.setObjectTag("castle");
+			castle1.x = 0;
+			castle1.y = 300;
+			addChild(castle1);
+			
+			ball.addCollisionTarget(bat1);
+			ball.addCollisionTarget(bat2);
+			ball.addCollisionTarget(castle1);
+			
 			addEventListener(Event.ENTER_FRAME, update);
 		}
+		
+		private function descructCastle(e:CustomEvent):void 
+		{
+			e.getObject().visible = false;
+		}
+		
+		private function addGameObject(_object:GameObject):void
+		{
+			gameObjects.push(_object);
+			_object.addEventListener(GameObject.DESTROY_OBJECT, descructCastle);
+		}
+			
 		
 		private function update(e:Event):void
 		{
@@ -64,7 +92,7 @@ package
 				gameObjects[i].update();
 			}
 		}
-		
+	
 	}
 
 }
