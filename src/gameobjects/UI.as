@@ -1,11 +1,11 @@
-package gameobjects {
+package gameobjects 
+{
 	import flash.display.MovieClip;
-	import flash.display.Sprite
 	/**
 	 * ...
 	 * @author Rob Verhoef & Daan Ruiter
 	 */
-	public class UI extends Sprite
+	public class UI extends GameObject
 	{
 		public var NoOfLivesP1:int = 5;
 		public var NoOfLivesP2:int = 5;
@@ -27,7 +27,7 @@ package gameobjects {
 		
 		private function LivesP1(y1:int):void 
 		{
-			displayLivesP1 = new ART_PLACEHOLDER_Ball;
+			displayLivesP1 = new ART_PLACEHOLDER_Life;
 			displayLivesP1.x = stage.stageHeight / 8;
 			displayLivesP1.y = stage.stageWidth / 2 * y1;
 			addChild(displayLivesP1);
@@ -35,7 +35,7 @@ package gameobjects {
 		
 		private function LivesP2(y2:int):void 
 		{
-			displayLivesP2 = new ART_PLACEHOLDER_Ball;
+			displayLivesP2 = new ART_PLACEHOLDER_Life;
 			displayLivesP2.x = stage.stageHeight / 8;
 			displayLivesP2.y = stage.stageWidth / 2 * y2;
 			addChild(displayLivesP1);

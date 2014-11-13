@@ -48,6 +48,7 @@ package
 			bat1.setObjectTag("bat");
 			bat1.addEventListener(Castle.CASTLE_DESTRUCT, descructCastle);
 			addChild(bat1);
+			
 			var bat2:Bat2 = new Bat2(new ART_PLACEHOLDER_BAT());
 			addGameObject(bat2);
 			bat2.setObjectTag("bat");
