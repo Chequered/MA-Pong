@@ -1,6 +1,7 @@
 package gameobjects
 {
 	import flash.display.MovieClip;
+	import util.CustomEvent;
 	/**
 	 * ...
 	 * @author Rob Verhoef & Daan Ruiter
@@ -16,7 +17,7 @@ package gameobjects
 			super(_sprite);
 		}
 		
-		public function getHitPoints():uint
+		public override function getHitPoints():uint
 		{
 			return hitPoints;
 		}
@@ -26,6 +27,7 @@ package gameobjects
 			this.hitPoints -= 1;
 			if (this.hitPoints <= 0)
 			{
+				destroy(this);
 			}
 		}
 		
@@ -33,7 +35,7 @@ package gameobjects
 		{
 			if (_object.getObjectTag() == "ball")
 			{
-				hitPoints -= 1;
+				attackWithBall();
 				destroy(_object);
 			}
 		}

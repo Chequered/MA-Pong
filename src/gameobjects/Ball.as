@@ -16,9 +16,7 @@ package gameobjects
 		
 		private var bounceCooldown:Number = 0.8;
 		private var bounceCooldownTime:Number = 0;
-		
-		private var locationTextField:TextField;
-		
+				
 		public function Ball(_sprite:MovieClip = null):void
 		{
 			super(_sprite);
@@ -29,13 +27,7 @@ package gameobjects
 		
 		private function init():void
 		{
-			locationTextField = new TextField();
-			locationTextField.text = "(" + x + ", " + y + ")[" + this.velocity.x + ", " + this.velocity.y + "]";
-			addChild(locationTextField);
-			var format:TextFormat = new TextFormat();
-			format.size = 18;
-			locationTextField.width = 200;
-			locationTextField.defaultTextFormat = format;
+			
 		}
 		
 		public override function update():void
@@ -49,11 +41,11 @@ package gameobjects
 				{
 					hitSideBound();
 				}
-				if (this.x >= stage.stageWidth)
+				if (this.x >= 800)
 				{
 					hitSideBound();
 				}
-				if (this.y >= stage.stageHeight)
+				if (this.y >= 600)
 				{
 					hitBound();
 				}
@@ -66,9 +58,6 @@ package gameobjects
 			{
 				this.bounceCooldownTime -= 0.1;
 			}
-			locationTextField.text = "(" + x + ", " + y + ")[" + this.velocity.x + ", " + this.velocity.y + "]";
-			locationTextField.x = sprite.x + sprite.width / 2 + 2;
-			locationTextField.y = sprite.y + sprite.height / 2 + 2;
 		}
 		
 		public function hitBat(_pos:Vector2D, _bat:GameObject):void

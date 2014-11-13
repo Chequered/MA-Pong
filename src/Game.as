@@ -5,6 +5,7 @@ package
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
+	import gameobjects.UI;
 	
 	import util.CustomEvent;
 	import gameobjects.Ball;
@@ -22,6 +23,8 @@ package
 		static public var isRunning:Boolean;
 		
 		private var gameObjects:Vector.<GameObject> = new Vector.<GameObject>();
+		private var player1HP:uint;
+		private var player2HP:uint;
 		
 		public function Game()
 		{
@@ -46,7 +49,6 @@ package
 			var bat1:Bat1 = new Bat1(new ART_PLACEHOLDER_BAT());
 			addGameObject(bat1);
 			bat1.setObjectTag("bat");
-			bat1.addEventListener(Castle.CASTLE_DESTRUCT, descructCastle);
 			addChild(bat1);
 			var bat2:Bat2 = new Bat2(new ART_PLACEHOLDER_BAT());
 			addGameObject(bat2);
@@ -66,6 +68,19 @@ package
 			castle1.y = 300;
 			addChild(castle1);
 			
+			var castle2:Castle = new Castle(new ART_PLACEHOLDER_Castle());
+			addGameObject(castle2);
+			castle2.setObjectTag("castle");
+			castle2.x = 700;
+			castle2.y = 300;
+			addChild(castle2);
+			
+			player1HP = castle1.getHitPoints();
+			player2HP = castle2.getHitPoints();
+			
+			var ui:UI = new UI();
+			addChild(ui);
+			
 			ball.addCollisionTarget(bat1);
 			ball.addCollisionTarget(bat2);
 			ball.addCollisionTarget(castle1);
@@ -73,15 +88,24 @@ package
 			addEventListener(Event.ENTER_FRAME, update);
 		}
 		
-		private function descructCastle(e:CustomEvent):void 
+		private function destroyObject(e:CustomEvent):void 
 		{
-			e.getObject().visible = false;
+			if (e.getObject().getObjectTag() == "ball")
+			{
+				gameObjects.splice(gameObjects.indexOf(e.getObject()), 1);
+				removeChild(e.getObject());
+			}
+		}
+		
+		private function spawnBall():void
+		{
+			
 		}
 		
 		private function addGameObject(_object:GameObject):void
 		{
 			gameObjects.push(_object);
-			_object.addEventListener(GameObject.DESTROY_OBJECT, descructCastle);
+			_object.addEventListener(GameObject.DESTROY_OBJECT, destroyObject);
 		}
 			
 		

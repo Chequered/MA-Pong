@@ -27,15 +27,15 @@ package gameobjects
 		public function GameObject(_sprite:MovieClip = null):void
 		{
 			this.sprite = _sprite;
+			collisionTargets = new Vector.<GameObject>();
 			this.velocity = new Vector2D();
-			addChild(sprite);
-			
-			init();
+			addEventListener(Event.ADDED_TO_STAGE, init);
 		}
 		
-		private function init():void
+		private function init(e:Event):void
 		{
-			collisionTargets = new Vector.<GameObject>();
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			addChild(sprite);
 			this.sprite.gotoAndStop(0);
 		}
 		
@@ -102,9 +102,14 @@ package gameobjects
 		
 		public function destroy(_object:GameObject):void
 		{
-			dispatchEvent(new CustomEvent(DESTROY_OBJECT, false, false, this));
+			dispatchEvent(new CustomEvent(DESTROY_OBJECT, false, false, _object));
 		}
 		
+		public function getHitPoints():uint
+		{
+			//abstract
+			return 0;
+		}
 	}
 
 }
