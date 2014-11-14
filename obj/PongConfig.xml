@@ -37,6 +37,7 @@
     </source-path>
     <library-path append="true">
       <path-element>C:\Users\Rob\Desktop\pong\MA-Pong\Pong Assets.swc</path-element>
+      <path-element>C:\Users\Rob\Desktop\pong\MA-Pong\Audio.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

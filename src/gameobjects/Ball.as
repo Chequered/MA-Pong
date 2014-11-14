@@ -16,6 +16,8 @@ package gameobjects
 		
 		private var bounceCooldown:Number = 0.8;
 		private var bounceCooldownTime:Number = 0;
+		
+		private var hitSound:hit = new hit();
 				
 		public function Ball(_sprite:MovieClip = null):void
 		{
@@ -68,6 +70,7 @@ package gameobjects
 			this.velocity.y = angle;
 			increaseSpeed();
 			this.bounceCooldownTime = bounceCooldown;
+			hitSound.play();
 		}
 		
 		

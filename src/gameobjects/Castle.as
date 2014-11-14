@@ -12,6 +12,8 @@ package gameobjects
 		
 		private var hitPoints:uint = 5;
 		
+		private var explode:Explode = new Explode();
+		
 		public function Castle(_sprite:MovieClip = null) 
 		{
 			super(_sprite);
@@ -36,6 +38,7 @@ package gameobjects
 			if (_object.getObjectTag() == "ball")
 			{
 				attackWithBall();
+				explode.play();
 				destroy(_object);
 			}
 		}

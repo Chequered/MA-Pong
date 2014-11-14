@@ -5,6 +5,8 @@ package
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
 	import gameobjects.UI;
 	
 	import util.CustomEvent;
@@ -26,9 +28,14 @@ package
 		private var player1HP:uint;
 		private var player2HP:uint;
 		
+		private var startSound:begin_geluidje = new begin_geluidje();
+		private var music:Sound = new bg_music();
+		
 		public function Game()
 		{
 			startGame();
+			startSound.play();
+			//playMusic();
 		}
 		
 		private function startGame():void
@@ -117,6 +124,18 @@ package
 				gameObjects[i].update();
 			}
 		}
+		
+		//private function playMusic():void
+		//{
+			//var channel:SoundChannel = music.play();
+			//channel.addEventListener(Event.SOUND_COMPLETE, loopMusic);
+		//}
+		//
+		//private function loopMusic(event:Event):void
+		//{
+			//SoundChannel(event.target).removeEventListener(event.type, loopMusic);
+			//playMusic();
+		//}
 	
 	}
 
