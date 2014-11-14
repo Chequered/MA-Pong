@@ -79,8 +79,8 @@ package
 			player1HP = castle1.getHitPoints();
 			player2HP = castle2.getHitPoints();
 			
-			var ui:UI = new UI();
-			addChild(ui);
+			//var ui:UI = new UI();
+			//addChild(ui);
 			
 			ball.addCollisionTarget(bat1);
 			ball.addCollisionTarget(bat2);
