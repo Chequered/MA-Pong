@@ -5,6 +5,8 @@ package
 	import flash.display.Stage;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
+	import flash.media.Sound;
+	import flash.media.SoundChannel;
 	import gameobjects.UI;
 	
 	import util.CustomEvent;
@@ -31,9 +33,14 @@ package
 		private var castle1:Castle;
 		private var castle2:Castle;
 		
+		private var startSound:begin_geluidje = new begin_geluidje();
+		private var music:Sound = new bg_music();
+		
 		public function Game()
 		{
 			startGame();
+			startSound.play();
+			//playMusic();
 		}
 		
 		private function startGame():void
@@ -83,7 +90,20 @@ package
 			castle2.setTeam(2);
 			addChild(castle2);
 			
+<<<<<<< HEAD:pong/src/Game.as
 			spawnBall();
+=======
+			player1HP = castle1.getHitPoints();
+			player2HP = castle2.getHitPoints();
+			
+			//var ui:UI = new UI();
+			//addChild(ui);
+			
+			ball.addCollisionTarget(bat1);
+			ball.addCollisionTarget(bat2);
+			ball.addCollisionTarget(castle1);
+			
+>>>>>>> b6c2318dc1db83fbaabb1aeb96d87c8b42ea1756:src/Game.as
 			addEventListener(Event.ENTER_FRAME, update);
 		}
 		
@@ -147,6 +167,18 @@ package
 				}
 			}
 		}
+		
+		//private function playMusic():void
+		//{
+			//var channel:SoundChannel = music.play();
+			//channel.addEventListener(Event.SOUND_COMPLETE, loopMusic);
+		//}
+		//
+		//private function loopMusic(event:Event):void
+		//{
+			//SoundChannel(event.target).removeEventListener(event.type, loopMusic);
+			//playMusic();
+		//}
 	
 	}
 

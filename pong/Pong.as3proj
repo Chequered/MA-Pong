@@ -55,6 +55,7 @@
     <element path="lib\bat.swc" />
     <element path="Bat Assets.swc" />
     <element path="Pong Assets.swc" />
+    <element path="Audio.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>

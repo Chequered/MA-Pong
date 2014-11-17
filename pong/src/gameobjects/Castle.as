@@ -13,7 +13,13 @@ package gameobjects
 		private var hitPoints:uint = 5;
 		private var team:int;
 		
+<<<<<<< HEAD:pong/src/gameobjects/Castle.as
 		public function Castle(_sprite:MovieClip = null, _team:int = 0 ):void 
+=======
+		private var explode:Explode = new Explode();
+		
+		public function Castle(_sprite:MovieClip = null) 
+>>>>>>> b6c2318dc1db83fbaabb1aeb96d87c8b42ea1756:src/gameobjects/Castle.as
 		{
 			super(_sprite);
 			this.team = _team;
@@ -54,6 +60,7 @@ package gameobjects
 			if (_object.getObjectTag() == "ball")
 			{
 				attackWithBall();
+				explode.play();
 				destroy(_object);
 			}
 		}
