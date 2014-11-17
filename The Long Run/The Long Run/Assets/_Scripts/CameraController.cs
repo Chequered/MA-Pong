@@ -9,16 +9,12 @@ public class CameraController : MonoBehaviour {
 	public int screenShakes;
 
 	private bool screenShaking;
+	private bool backToOrigin;
 	private List<Vector3> screenShakeVects = new List<Vector3>();
 
 	private void Awake()
 	{
 		cam = this;
-	}
-
-	private void Start()
-	{
-		ScreenShake();
 	}
 
 	public void ScreenShake()
@@ -27,15 +23,12 @@ public class CameraController : MonoBehaviour {
 		{
 			float range = Random.Range(0, screenShakeStrength);
 			float side = Random.Range(0, 2);
-			Vector3 vect = new Vector3(0,0,0);
+			Vector3 vect = this.transform.position;
 			if(side == 1)
 			{
-				vect = new Vector3(this.transform.position.x + range, this.transform.position.y, this.transform.position.z + range );
-				Debug.Log(vect);
-			}else{
-				vect = Vector3.left + range;
 				vect = new Vector3(this.transform.position.x - range, this.transform.position.y, this.transform.position.z - range );
-				Debug.Log(vect);
+			}else{
+				vect = new Vector3(this.transform.position.x + range, this.transform.position.y, this.transform.position.z + range );
 			}
 			screenShakeVects.Add(vect);
 		}
@@ -48,10 +41,12 @@ public class CameraController : MonoBehaviour {
 		{
 			if(transform.position != screenShakeVects[0])
 			{
-				this.transform.position = Vector3.MoveTowards(transform.position,  screenShakeVects[0], 0.2f);
+				this.transform.position = Vector3.MoveTowards(transform.position,  screenShakeVects[0], 0.45f);
 			}else{
 				screenShakeVects.Remove(screenShakeVects[0]);
 			}
+		}else if(!backToOrigin){
+			this.transform.position = Vector3.MoveTowards(transform.position,  new Vector3(0, this.transform.position.y, 0), 0.45f);
 		}
 	}
 }
