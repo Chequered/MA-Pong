@@ -6,6 +6,7 @@ public class PlayerBase : MonoBehaviour {
 	public int totalHealth;
 	public float movementSpeed;
 	public float shootingSpeed;
+	public float damage;
 	protected bool alive;
 
 	private CharacterController con;
@@ -43,20 +44,38 @@ public class PlayerBase : MonoBehaviour {
 
 	private void GetInput()
 	{
-		if(Input.GetButtonDown("Shoot"))
+		if(shootCooldown > 0)
+		{
+			shootCooldown -= shootingSpeed;
+		}else if(Input.GetButton("Shoot"))
 		{
 			Shoot();
 		}
 	}
 
+	private float shootCooldown;
 	private void Shoot()
 	{
-		Instantiate(Data.prefabs.bulletPrefab, transform.position, transform.localRotation);
+		GameObject bullet = Instantiate(Data.prefabs.bulletPrefab, transform.position, transform.localRotation) as GameObject;
+		bullet.GetComponent<BulletBase>().SetDamage(damage);
+		MuzzleFlashOn();
+		shootCooldown = 175;
 	}
 
 	private double RadianToDegree(double angle)
 	{
 		return angle * (180.0 / System.Math.PI);
+	}
+
+	private void MuzzleFlashOn()
+	{
+		GetComponent<Light>().enabled = true;
+		Invoke("MuzzleFlashOff", 0.05f);
+	}
+
+	private void MuzzleFlashOff()
+	{
+		GetComponent<Light>().enabled = false;
 	}
 
 	public bool isAlive()

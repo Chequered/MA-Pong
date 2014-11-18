@@ -5,6 +5,7 @@ public class BulletBase : MonoBehaviour {
 
 	public float movementSpeed;
 	public float lifeTime;
+	private float damage;
 
 	private void Start()
 	{
@@ -19,5 +20,15 @@ public class BulletBase : MonoBehaviour {
 	private void DestroyMe()
 	{
 		Destroy(this.gameObject);
+	}
+
+	public void SetDamage(float _damage)
+	{
+		this.damage = _damage;
+	}
+
+	public float GetDamage()
+	{
+		return damage;
 	}
 }

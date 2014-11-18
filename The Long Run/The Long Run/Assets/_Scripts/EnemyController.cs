@@ -14,10 +14,20 @@ public class EnemyController : MonoBehaviour {
 
 	void Update () {
 		float walk = speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards (transform.position, target.position, walk);
+		transform.parent.transform.position = Vector3.MoveTowards (transform.position, target.position, walk);
+	}
 
-		if (hp > 1) {
-			Destroy(this.gameObject);
+	void OnTriggerEnter(Collider coll)
+	{
+		Debug.Log(coll.tag);
+		if(coll.transform.tag == "Bullet")
+		{
+			this.hp -= coll.GetComponent<BulletBase>().GetDamage();
+			Destroy(coll.gameObject);
+			
+			if (hp < 1) {
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }
