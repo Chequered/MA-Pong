@@ -7,6 +7,7 @@ public class PlayerBase : MonoBehaviour {
 	public float movementSpeed;
 	public float shootingSpeed;
 	public float damage;
+	public GameObject iteminInv;
 	protected bool alive;
 
 	private CharacterController con;
@@ -70,7 +71,7 @@ public class PlayerBase : MonoBehaviour {
 	private void MuzzleFlashOn()
 	{
 		GetComponent<Light>().enabled = true;
-		Invoke("MuzzleFlashOff", 0.05f);
+		Invoke("MuzzleFlashOff", 0.02f);
 	}
 
 	private void MuzzleFlashOff()

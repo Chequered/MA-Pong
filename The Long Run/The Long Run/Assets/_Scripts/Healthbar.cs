@@ -8,9 +8,7 @@ public class Healthbar : MonoBehaviour {
 
 	private float maxHealth;
 	private float currentHealth;
-
 	private float maxWidth;
-	private bool visible;
 
 	private Color normalGreen;
 	private Color normalRed;
@@ -44,7 +42,6 @@ public class Healthbar : MonoBehaviour {
 	public void UpdateBar(float _new)
 	{
 		currentHealth = _new;
-		visible = true;
 		greenBar.guiTexture.pixelInset = new Rect(greenBar.guiTexture.pixelInset.x, greenBar.guiTexture.pixelInset.y, maxWidth * currentHealth / maxHealth, greenBar.guiTexture.pixelInset.height);
 		greenBar.guiTexture.color = normalGreen;
 		redBar.guiTexture.color = normalRed;
@@ -52,14 +49,11 @@ public class Healthbar : MonoBehaviour {
 
 	private void Update()
 	{
-		if(visible)
-		{
-			Color green = greenBar.guiTexture.color;
-			green.a -= 0.0035f;
-			Color red = redBar.guiTexture.color;
-			red.a -= 0.0035f;
-			greenBar.guiTexture.color = green;
-			redBar.guiTexture.color = red;
-		}
+		Color green = greenBar.guiTexture.color;
+		green.a -= 0.0035f;
+		Color red = redBar.guiTexture.color;
+		red.a -= 0.0035f;
+		greenBar.guiTexture.color = green;
+		redBar.guiTexture.color = red;
 	}
 }

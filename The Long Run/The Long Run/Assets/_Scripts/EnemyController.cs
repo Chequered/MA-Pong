@@ -34,8 +34,18 @@ public class EnemyController : MonoBehaviour {
 
 		healthBar.GetComponent<Healthbar>().UpdateBar(this.hp);
 
+		StartCoroutine(HitPause());
+
 		if (hp < 1) {
 			Destroy(transform.parent.gameObject);
+			Time.timeScale = 1;
 		}
+	}
+
+	IEnumerator HitPause()
+	{
+		Time.timeScale = 0.1f;
+		yield return new WaitForSeconds(0.005f);
+		Time.timeScale = 1;
 	}
 }
