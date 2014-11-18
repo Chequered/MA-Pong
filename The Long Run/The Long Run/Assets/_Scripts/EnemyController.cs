@@ -20,12 +20,12 @@ public class EnemyController : MonoBehaviour {
 		transform.parent.transform.position = Vector3.MoveTowards (transform.position, target.position, walk);
 		healthBar.GetComponent<Healthbar>().UpdatePosition(transform.position);
 
-		if (playerOutside == false) 
+		if (!playerOutside) 
 		{
 			target = GameObject.FindWithTag("Wall").transform;
 		}
 		
-		if (playerOutside == true) 
+		if (playerOutside) 
 		{
 			target = GameObject.FindWithTag("PlayerOutside").transform;
 		}

@@ -7,15 +7,21 @@ public class PlayerBase : MonoBehaviour {
 	public float movementSpeed;
 	public float shootingSpeed;
 	public float damage;
-	public GameObject iteminInv;
+	private ItemType iteminInv;
 	protected bool alive;
 
 	private CharacterController con;
 	private Vector3 moveDirection;
+	private GameController GC;
 
 	private void Awake()
 	{
 		con = transform.parent.GetComponent<CharacterController>();
+	}
+
+	private void Start()
+	{
+		GC = GameController.GC;
 	}
 
 	private void Update()
@@ -43,6 +49,18 @@ public class PlayerBase : MonoBehaviour {
 		this.transform.localEulerAngles = new Vector3(0,(float)RadianToDegree(Mathf.Atan2(angH, angV) + 90));
 	}
 
+	private void OnTriggerEnter(Collider coll)
+	{
+		if(coll.transform.tag == "Item")
+		{
+			if(iteminInv == null)
+			{
+				iteminInv = coll.gameObject.GetComponent<Item>().GetItemType();
+				Destroy(coll.gameObject);
+			}
+		}
+	}
+
 	private void GetInput()
 	{
 		if(shootCooldown > 0)
@@ -51,6 +69,10 @@ public class PlayerBase : MonoBehaviour {
 		}else if(Input.GetButton("Shoot"))
 		{
 			Shoot();
+		}
+		if(Input.GetButtonDown("UseItem"))
+		{
+			GC.UseItem(this.gameObject, iteminInv);
 		}
 	}
 
