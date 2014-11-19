@@ -5,10 +5,12 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject healthBar;
 	public bool playerOutside;
+	public bool chooseOnce;
 	public Transform target;
 	public float speed;
 	public float hp;
 	public float damage;
+	public int attackWhat;
 
 	void Start () {
 		healthBar.GetComponent<Healthbar>().SetHealth(hp);
@@ -23,11 +25,21 @@ public class EnemyController : MonoBehaviour {
 		if (!playerOutside) 
 		{
 			target = GameObject.FindWithTag("Wall").transform;
+			chooseOnce = false;
 		}
 		
 		if (playerOutside) 
 		{
+			if(chooseOnce == false)
+			{
+			attackWhat = Random.Range(1,3);
+			chooseOnce = true;
+			}
+
+			if(attackWhat == 2)
+			{
 			target = GameObject.FindWithTag("PlayerOutside").transform;
+			}
 		}
 	}
 
