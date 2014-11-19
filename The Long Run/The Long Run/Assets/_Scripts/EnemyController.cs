@@ -5,10 +5,12 @@ public class EnemyController : MonoBehaviour {
 
 	public GameObject healthBar;
 	public bool playerOutside;
+	public bool chooseOnce;
 	public Transform target;
 	public float speed;
 	public float hp;
 	public float damage;
+	public int attackWhat;
 
 	void Start () {
 		healthBar.GetComponent<Healthbar>().SetHealth(hp);
@@ -20,14 +22,24 @@ public class EnemyController : MonoBehaviour {
 		transform.parent.transform.position = Vector3.MoveTowards (transform.position, target.position, walk);
 		healthBar.GetComponent<Healthbar>().UpdatePosition(transform.position);
 
-		if (playerOutside == false) 
+		if (!playerOutside) 
 		{
 			target = GameObject.FindWithTag("Wall").transform;
+			chooseOnce = false;
 		}
 		
-		if (playerOutside == true) 
+		if (playerOutside) 
 		{
+			if(chooseOnce == false)
+			{
+			attackWhat = Random.Range(1,3);
+			chooseOnce = true;
+			}
+
+			if(attackWhat == 2)
+			{
 			target = GameObject.FindWithTag("PlayerOutside").transform;
+			}
 		}
 	}
 
@@ -46,8 +58,18 @@ public class EnemyController : MonoBehaviour {
 
 		healthBar.GetComponent<Healthbar>().UpdateBar(this.hp);
 
+		StartCoroutine(HitPause());
+
 		if (hp < 1) {
 			Destroy(transform.parent.gameObject);
+			Time.timeScale = 1;
 		}
+	}
+
+	IEnumerator HitPause()
+	{
+		Time.timeScale = 0.1f;
+		yield return new WaitForSeconds(0.005f);
+		Time.timeScale = 1;
 	}
 }
