@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public enum ItemType
 {
+	None,
 	Buildpack,
 	Vokda,
 	Molotov,
@@ -12,7 +13,7 @@ public enum ItemType
 
 public class Item : MonoBehaviour {
 
-	protected ItemType type;
+	public ItemType type;
 
 	private void Start()
 	{

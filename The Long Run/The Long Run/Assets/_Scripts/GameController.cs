@@ -26,7 +26,10 @@ public class GameController : MonoBehaviour
 	{
 		if(item == ItemType.Buildpack)
 		{
-
+			foreach(GameObject wall in walls)
+			{
+				wall.GetComponent<Wall>().Rebuild();
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class EnemyController : MonoBehaviour {
@@ -46,7 +46,7 @@ public class EnemyController : MonoBehaviour {
 
 		healthBar.GetComponent<Healthbar>().UpdateBar(this.hp);
 
-		StartCoroutine(HitPause());
+		//StartCoroutine(HitPause());
 
 		if (hp < 1) {
 			Destroy(transform.parent.gameObject);
@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator HitPause()
+	private IEnumerator HitPause()
 	{
 		Time.timeScale = 0.1f;
 		yield return new WaitForSeconds(0.005f);
