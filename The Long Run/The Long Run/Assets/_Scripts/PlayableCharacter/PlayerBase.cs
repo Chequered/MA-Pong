@@ -95,6 +95,7 @@ public class PlayerBase : MonoBehaviour {
 		if(Input.GetButtonDown("UseItem"))
 		{
 			GC.UseItem(this.gameObject, iteminInv);
+			Debug.Log(iteminInv);
 		}
 		if(Input.GetButtonDown("ToggleController"))
 		{
@@ -104,6 +105,10 @@ public class PlayerBase : MonoBehaviour {
 			}else{
 				usingController = false;
 			}
+		}
+		if(Input.GetKeyDown(KeyCode.T))
+		{
+			GC.UseItem(this.gameObject, ItemType.Molotov);
 		}
 	}
 
@@ -135,5 +140,10 @@ public class PlayerBase : MonoBehaviour {
 	public bool isAlive()
 	{
 		return alive;
+	}
+
+	public void RemoveItem()
+	{
+		this.iteminInv = ItemType.None;
 	}
 }

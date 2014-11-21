@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour {
 
 			if(attackWhat == 2)
 			{
-			target = GameObject.FindWithTag("PlayerOutside").transform;
+				target = GameObject.FindWithTag("PlayerOutside").transform;
 			}
 		}
 	}
@@ -51,14 +51,23 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
-	private void TakeDamage(GameObject bullet)
+	public void TakeDamage(GameObject bullet)
 	{
 		this.hp -= bullet.GetComponent<BulletBase>().GetDamage();
 		Destroy(bullet.gameObject);
 
 		healthBar.GetComponent<Healthbar>().UpdateBar(this.hp);
 
-		//StartCoroutine(HitPause());
+		if (hp < 1) {
+			Destroy(transform.parent.gameObject);
+			Time.timeScale = 1;
+		}
+	}
+
+	public void TakeDamage(float dmg)
+	{
+		this.hp -= dmg;
+		healthBar.GetComponent<Healthbar>().UpdateBar(this.hp);
 
 		if (hp < 1) {
 			Destroy(transform.parent.gameObject);
