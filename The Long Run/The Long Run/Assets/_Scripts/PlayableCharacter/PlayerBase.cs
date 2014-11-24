@@ -8,7 +8,8 @@ public class PlayerBase : MonoBehaviour {
 	public float shootingSpeed;
 	public float damage;
 	private ItemType iteminInv;
-	protected bool alive;
+	private bool alive;
+	private bool usingController;
 
 	private CharacterController con;
 	private Vector3 moveDirection;
@@ -28,8 +29,13 @@ public class PlayerBase : MonoBehaviour {
 	{
 		if(con)
 		{
+			if(usingController)
+			{
+				RotateToAxis();
+			}else{
+				RotateToMouse();
+			}
 			MoveToAxis();
-			RotateToAxis();
 			GetInput();
 		}
 	}
@@ -49,11 +55,27 @@ public class PlayerBase : MonoBehaviour {
 		this.transform.localEulerAngles = new Vector3(0,(float)RadianToDegree(Mathf.Atan2(angH, angV) + 90));
 	}
 
+	private Vector3 lookPos;
+	private void RotateToMouse()
+	{
+		RaycastHit hit;
+		Ray ray;
+		
+		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if(Physics.Raycast(ray, out hit))
+		{
+			lookPos = hit.point;
+			lookPos.y = transform.position.y;
+			transform.LookAt(lookPos);
+		}
+	}
+
 	private void OnTriggerEnter(Collider coll)
 	{
 		if(coll.transform.tag == "Item")
 		{
-			if(iteminInv == null)
+			Debug.Log(iteminInv);
+			if(iteminInv == ItemType.None)
 			{
 				iteminInv = coll.gameObject.GetComponent<Item>().GetItemType();
 				Destroy(coll.gameObject);
@@ -66,20 +88,34 @@ public class PlayerBase : MonoBehaviour {
 		if(shootCooldown > 0)
 		{
 			shootCooldown -= shootingSpeed;
-		}else if(Input.GetButton("Shoot"))
+		}else if(Input.GetButton("Shoot") || Input.GetMouseButton(0))
 		{
 			Shoot();
 		}
 		if(Input.GetButtonDown("UseItem"))
 		{
 			GC.UseItem(this.gameObject, iteminInv);
+			Debug.Log(iteminInv);
+		}
+		if(Input.GetButtonDown("ToggleController"))
+		{
+			if(!usingController)
+			{
+				usingController = true;
+			}else{
+				usingController = false;
+			}
+		}
+		if(Input.GetKeyDown(KeyCode.T))
+		{
+			GC.UseItem(this.gameObject, ItemType.Molotov);
 		}
 	}
 
 	private float shootCooldown;
 	private void Shoot()
 	{
-		GameObject bullet = Instantiate(Data.prefabs.bulletPrefab, transform.position, transform.localRotation) as GameObject;
+		GameObject bullet = Instantiate(Data.prefabs.bullet, transform.position, transform.localRotation) as GameObject;
 		bullet.GetComponent<BulletBase>().SetDamage(damage);
 		MuzzleFlashOn();
 		shootCooldown = 175;
@@ -104,5 +140,10 @@ public class PlayerBase : MonoBehaviour {
 	public bool isAlive()
 	{
 		return alive;
+	}
+
+	public void RemoveItem()
+	{
+		this.iteminInv = ItemType.None;
 	}
 }

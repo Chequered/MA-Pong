@@ -49,11 +49,14 @@ public class Healthbar : MonoBehaviour {
 
 	private void Update()
 	{
-		Color green = greenBar.guiTexture.color;
-		green.a -= 0.0035f;
-		Color red = redBar.guiTexture.color;
-		red.a -= 0.0035f;
-		greenBar.guiTexture.color = green;
-		redBar.guiTexture.color = red;
+		if(redBar.guiTexture.color.a > 0 && greenBar.guiTexture.color.a > 0)
+		{
+			Color green = greenBar.guiTexture.color;
+			green.a -= 0.0035f;
+			Color red = redBar.guiTexture.color;
+			red.a -= 0.0035f;
+			greenBar.guiTexture.color = green;
+			redBar.guiTexture.color = red;
+		}
 	}
 }
