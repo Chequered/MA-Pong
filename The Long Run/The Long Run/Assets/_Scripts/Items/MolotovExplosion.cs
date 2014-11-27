@@ -16,7 +16,6 @@ public class MolotovExplosion : MonoBehaviour {
 		for(int i = 0; i < renders.Length; i++)
 		{
 			materials.Add(renders[i].material);
-			Debug.Log(renders[i].material);
 		}
 	}
 
@@ -50,7 +49,6 @@ public class MolotovExplosion : MonoBehaviour {
 			Color col = material.GetColor("_TintColor");
 			col.a -= 0.005f;
 			material.SetColor("_TintColor", col);
-			Debug.Log(material.GetColor("_TintColor").a);
 			if(col.a < -0.5f)
 			{
 				Destroy(this.gameObject);

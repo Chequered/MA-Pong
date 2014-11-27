@@ -1,19 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum GameCharacter
+{
+	Castro,
+	Stalin,
+	Lenin,
+	Un
+}
+
 public class PlayerBase : MonoBehaviour {
 
 	public int totalHealth;
 	public float movementSpeed;
 	public float shootingSpeed;
 	public float damage;
-	private ItemType iteminInv;
+	public ItemType iteminInv;
+	public GameCharacter character;
 	private bool alive;
 	private bool usingController;
+	private int inputIndex;
 
 	private CharacterController con;
+	private AudioSource[] audioSources;
 	private Vector3 moveDirection;
 	private GameController GC;
+	private int ID;
 
 	private void Awake()
 	{
@@ -23,6 +35,7 @@ public class PlayerBase : MonoBehaviour {
 	private void Start()
 	{
 		GC = GameController.GC;
+		audioSources = GetComponents<AudioSource>();
 	}
 
 	private void Update()
@@ -32,17 +45,17 @@ public class PlayerBase : MonoBehaviour {
 			if(usingController)
 			{
 				RotateToAxis();
+				MoveToAxis();
 			}else{
 				RotateToMouse();
 			}
-			MoveToAxis();
 			GetInput();
 		}
 	}
 
 	private void MoveToAxis()
 	{
-		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		moveDirection = new Vector3(Input.GetAxis("Horizontal" + ID), 0, Input.GetAxis("Vertical" + ID));
 		moveDirection = transform.parent.transform.TransformDirection(moveDirection);
 		moveDirection *= movementSpeed;
 		con.SimpleMove(moveDirection * Time.deltaTime);
@@ -50,8 +63,8 @@ public class PlayerBase : MonoBehaviour {
 
 	private void RotateToAxis()
 	{
-		float angH = Input.GetAxis("RightH");
-		float angV = Input.GetAxis("RightV");
+		float angH = Input.GetAxis("RightH" + ID);
+		float angV = Input.GetAxis("RightV" + ID);
 		this.transform.localEulerAngles = new Vector3(0,(float)RadianToDegree(Mathf.Atan2(angH, angV) + 90));
 	}
 
@@ -88,14 +101,13 @@ public class PlayerBase : MonoBehaviour {
 		if(shootCooldown > 0)
 		{
 			shootCooldown -= shootingSpeed;
-		}else if(Input.GetButton("Shoot") || Input.GetMouseButton(0))
+		}else if(Input.GetButton("Shoot" + ID))
 		{
 			Shoot();
 		}
-		if(Input.GetButtonDown("UseItem"))
+		if(Input.GetButtonDown("UseItem" + ID))
 		{
 			GC.UseItem(this.gameObject, iteminInv);
-			Debug.Log(iteminInv);
 		}
 		if(Input.GetButtonDown("ToggleController"))
 		{
@@ -106,10 +118,6 @@ public class PlayerBase : MonoBehaviour {
 				usingController = false;
 			}
 		}
-		if(Input.GetKeyDown(KeyCode.T))
-		{
-			GC.UseItem(this.gameObject, ItemType.Molotov);
-		}
 	}
 
 	private float shootCooldown;
@@ -119,6 +127,20 @@ public class PlayerBase : MonoBehaviour {
 		bullet.GetComponent<BulletBase>().SetDamage(damage);
 		MuzzleFlashOn();
 		shootCooldown = 175;
+		PlayGunSound();
+	}
+
+	private void PlayGunSound()
+	{
+		for(int i = 0; i < audioSources.Length; i++)
+		{
+			if(!audioSources[i].isPlaying)
+			{
+				audioSources[i].Play();
+				audioSources[i].pitch += Random.Range(-0.2f, 0.2f);
+				i = audioSources.Length;
+			}
+		}
 	}
 
 	private double RadianToDegree(double angle)
@@ -140,6 +162,21 @@ public class PlayerBase : MonoBehaviour {
 	public bool isAlive()
 	{
 		return alive;
+	}
+	
+	public GameCharacter GetCharacter()
+	{
+		return character;
+	}
+
+	public void SetCharacter(GameCharacter character)
+	{
+		this.character = character;
+	}
+
+	public void SetID(int id)
+	{
+		this.ID = id;
 	}
 
 	public void RemoveItem()
