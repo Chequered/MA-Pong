@@ -1,6 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
+public enum TargetType
+{
+	None,
+	Player,
+	Wall
+}
+
 public class EnemyController : MonoBehaviour {
 
 	public GameObject healthBar;
@@ -11,10 +18,12 @@ public class EnemyController : MonoBehaviour {
 	public float hp;
 	public float damage;
 	public int attackWhat;
+	
+	private TargetType targetType;
 
 	void Start () {
 		healthBar.GetComponent<Healthbar>().SetHealth(hp);
-		target = GameObject.FindWithTag("Wall").transform;
+		SetRandomWall();
 	}
 
 	void Update () {
@@ -22,9 +31,9 @@ public class EnemyController : MonoBehaviour {
 		transform.parent.transform.position = Vector3.MoveTowards (transform.position, target.position, walk);
 		healthBar.GetComponent<Healthbar>().UpdatePosition(transform.position);
 
-		if (!playerOutside) 
+		if (!playerOutside && targetType == TargetType.None) 
 		{
-			target = GameObject.FindWithTag("Wall").transform;
+			SetRandomWall();
 			chooseOnce = false;
 		}
 		
@@ -32,8 +41,8 @@ public class EnemyController : MonoBehaviour {
 		{
 			if(chooseOnce == false)
 			{
-			attackWhat = Random.Range(1,3);
-			chooseOnce = true;
+				attackWhat = Random.Range(1,3);
+				chooseOnce = true;
 			}
 
 			if(attackWhat == 2)
@@ -41,6 +50,14 @@ public class EnemyController : MonoBehaviour {
 				target = GameObject.FindWithTag("PlayerOutside").transform;
 			}
 		}
+	}
+
+	private void SetRandomWall()
+	{
+		GameObject[] targets = GameObject.FindGameObjectsWithTag("Wall");
+		int r = Random.Range(0, targets.Length);
+		target = targets[r].transform;
+		targetType = TargetType.Wall;
 	}
 
 	void OnTriggerEnter(Collider coll)
