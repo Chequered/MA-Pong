@@ -1,0 +1,397 @@
+fileFormatVersion: 2
+guid: 4ef36a0307c1bf94ab72035e436b5b81
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box002
+    100004: Box004
+    100006: Cone002
+    100008: Cone003
+    100010: Cone004
+    100012: Cone005
+    100014: Cone006
+    100016: Cone007
+    100018: Cone008
+    100020: Cone009
+    100022: Cone010
+    100024: Cone011
+    100026: Cone012
+    100028: Cone013
+    100030: Cone014
+    100032: Cone015
+    100034: Cone016
+    100036: Cone017
+    100038: Cone018
+    100040: Cone019
+    100042: Cone021
+    100044: Cone022
+    100046: Cone023
+    100048: Cone024
+    100050: Cone025
+    100052: Cone026
+    100054: Cone027
+    100056: Cone028
+    100058: Cylinder001
+    100060: midden stukie
+    100062: midden stukie001
+    100064: midden stukie002
+    100066: midden stukie003
+    100068: midden stukie004
+    100070: midden stukie005
+    100072: midden stukie006
+    100074: midden stukie007
+    100076: midden stukie008
+    100078: midden stukie009
+    100080: midden stukie010
+    100082: midden stukie011
+    100084: midden stukie012
+    100086: midden stukie013
+    100088: midden stukie014
+    100090: midden stukie015
+    100092: midden stukie016
+    100094: midden stukie017
+    100096: midden stukie018
+    100098: midden stukie019
+    100100: midden stukie020
+    100102: midden stukie021
+    100104: midden stukie023
+    100106: midden stukie024
+    100108: midden stukie026
+    100110: midden stukie027
+    100112: midden stukie028
+    100114: midden stukie029
+    100116: midden stukie030
+    100118: midden stukie031
+    100120: midden stukie032
+    100122: midden stukie033
+    100124: midden stukie034
+    100126: midden stukie035
+    100128: midden stukie036
+    100130: midden stukie037
+    100132: Sphere001
+    100134: //RootNode
+    400000: Box001
+    400002: Box002
+    400004: Box004
+    400006: Cone002
+    400008: Cone003
+    400010: Cone004
+    400012: Cone005
+    400014: Cone006
+    400016: Cone007
+    400018: Cone008
+    400020: Cone009
+    400022: Cone010
+    400024: Cone011
+    400026: Cone012
+    400028: Cone013
+    400030: Cone014
+    400032: Cone015
+    400034: Cone016
+    400036: Cone017
+    400038: Cone018
+    400040: Cone019
+    400042: Cone021
+    400044: Cone022
+    400046: Cone023
+    400048: Cone024
+    400050: Cone025
+    400052: Cone026
+    400054: Cone027
+    400056: Cone028
+    400058: Cylinder001
+    400060: midden stukie
+    400062: midden stukie001
+    400064: midden stukie002
+    400066: midden stukie003
+    400068: midden stukie004
+    400070: midden stukie005
+    400072: midden stukie006
+    400074: midden stukie007
+    400076: midden stukie008
+    400078: midden stukie009
+    400080: midden stukie010
+    400082: midden stukie011
+    400084: midden stukie012
+    400086: midden stukie013
+    400088: midden stukie014
+    400090: midden stukie015
+    400092: midden stukie016
+    400094: midden stukie017
+    400096: midden stukie018
+    400098: midden stukie019
+    400100: midden stukie020
+    400102: midden stukie021
+    400104: midden stukie023
+    400106: midden stukie024
+    400108: midden stukie026
+    400110: midden stukie027
+    400112: midden stukie028
+    400114: midden stukie029
+    400116: midden stukie030
+    400118: midden stukie031
+    400120: midden stukie032
+    400122: midden stukie033
+    400124: midden stukie034
+    400126: midden stukie035
+    400128: midden stukie036
+    400130: midden stukie037
+    400132: Sphere001
+    400134: //RootNode
+    2300000: Box001
+    2300002: Box002
+    2300004: Box004
+    2300006: Cone002
+    2300008: Cone003
+    2300010: Cone004
+    2300012: Cone005
+    2300014: Cone006
+    2300016: Cone007
+    2300018: Cone008
+    2300020: Cone009
+    2300022: Cone010
+    2300024: Cone011
+    2300026: Cone012
+    2300028: Cone013
+    2300030: Cone014
+    2300032: Cone015
+    2300034: Cone016
+    2300036: Cone017
+    2300038: Cone018
+    2300040: Cone019
+    2300042: Cone021
+    2300044: Cone022
+    2300046: Cone023
+    2300048: Cone024
+    2300050: Cone025
+    2300052: Cone026
+    2300054: Cone027
+    2300056: Cone028
+    2300058: Cylinder001
+    2300060: midden stukie
+    2300062: midden stukie001
+    2300064: midden stukie002
+    2300066: midden stukie003
+    2300068: midden stukie004
+    2300070: midden stukie005
+    2300072: midden stukie006
+    2300074: midden stukie007
+    2300076: midden stukie008
+    2300078: midden stukie009
+    2300080: midden stukie010
+    2300082: midden stukie011
+    2300084: midden stukie012
+    2300086: midden stukie013
+    2300088: midden stukie014
+    2300090: midden stukie015
+    2300092: midden stukie016
+    2300094: midden stukie017
+    2300096: midden stukie018
+    2300098: midden stukie019
+    2300100: midden stukie020
+    2300102: midden stukie021
+    2300104: midden stukie023
+    2300106: midden stukie024
+    2300108: midden stukie026
+    2300110: midden stukie027
+    2300112: midden stukie028
+    2300114: midden stukie029
+    2300116: midden stukie030
+    2300118: midden stukie031
+    2300120: midden stukie032
+    2300122: midden stukie033
+    2300124: midden stukie034
+    2300126: midden stukie035
+    2300128: midden stukie036
+    2300130: midden stukie037
+    2300132: Sphere001
+    3300000: Box001
+    3300002: Box002
+    3300004: Box004
+    3300006: Cone002
+    3300008: Cone003
+    3300010: Cone004
+    3300012: Cone005
+    3300014: Cone006
+    3300016: Cone007
+    3300018: Cone008
+    3300020: Cone009
+    3300022: Cone010
+    3300024: Cone011
+    3300026: Cone012
+    3300028: Cone013
+    3300030: Cone014
+    3300032: Cone015
+    3300034: Cone016
+    3300036: Cone017
+    3300038: Cone018
+    3300040: Cone019
+    3300042: Cone021
+    3300044: Cone022
+    3300046: Cone023
+    3300048: Cone024
+    3300050: Cone025
+    3300052: Cone026
+    3300054: Cone027
+    3300056: Cone028
+    3300058: Cylinder001
+    3300060: midden stukie
+    3300062: midden stukie001
+    3300064: midden stukie002
+    3300066: midden stukie003
+    3300068: midden stukie004
+    3300070: midden stukie005
+    3300072: midden stukie006
+    3300074: midden stukie007
+    3300076: midden stukie008
+    3300078: midden stukie009
+    3300080: midden stukie010
+    3300082: midden stukie011
+    3300084: midden stukie012
+    3300086: midden stukie013
+    3300088: midden stukie014
+    3300090: midden stukie015
+    3300092: midden stukie016
+    3300094: midden stukie017
+    3300096: midden stukie018
+    3300098: midden stukie019
+    3300100: midden stukie020
+    3300102: midden stukie021
+    3300104: midden stukie023
+    3300106: midden stukie024
+    3300108: midden stukie026
+    3300110: midden stukie027
+    3300112: midden stukie028
+    3300114: midden stukie029
+    3300116: midden stukie030
+    3300118: midden stukie031
+    3300120: midden stukie032
+    3300122: midden stukie033
+    3300124: midden stukie034
+    3300126: midden stukie035
+    3300128: midden stukie036
+    3300130: midden stukie037
+    3300132: Sphere001
+    4300000: Cone002
+    4300002: midden stukie
+    4300004: Cone003
+    4300006: midden stukie001
+    4300008: Cone004
+    4300010: Cone005
+    4300012: midden stukie002
+    4300014: midden stukie003
+    4300016: Cone006
+    4300018: Cone007
+    4300020: Cone008
+    4300022: Cone009
+    4300024: midden stukie004
+    4300026: midden stukie005
+    4300028: midden stukie006
+    4300030: midden stukie007
+    4300032: midden stukie008
+    4300034: midden stukie009
+    4300036: midden stukie010
+    4300038: midden stukie011
+    4300040: midden stukie012
+    4300042: midden stukie013
+    4300044: Cone010
+    4300046: Cone011
+    4300048: Cone012
+    4300050: Cone013
+    4300052: Cone014
+    4300054: Cone015
+    4300056: Cone016
+    4300058: Cone017
+    4300060: Cone018
+    4300062: Cone019
+    4300064: midden stukie014
+    4300066: midden stukie015
+    4300068: midden stukie016
+    4300070: Cone021
+    4300072: Cone022
+    4300074: Cone023
+    4300076: Cone024
+    4300078: Cone025
+    4300080: Cone026
+    4300082: Cone027
+    4300084: Cone028
+    4300086: midden stukie017
+    4300088: midden stukie018
+    4300090: midden stukie019
+    4300092: midden stukie020
+    4300094: midden stukie021
+    4300096: midden stukie023
+    4300098: midden stukie024
+    4300100: midden stukie026
+    4300102: midden stukie027
+    4300104: midden stukie028
+    4300106: midden stukie029
+    4300108: midden stukie030
+    4300110: midden stukie031
+    4300112: Cylinder001
+    4300114: Box001
+    4300116: Box002
+    4300118: Box004
+    4300120: Sphere001
+    4300122: midden stukie032
+    4300124: midden stukie033
+    4300126: midden stukie034
+    4300128: midden stukie035
+    4300130: midden stukie036
+    4300132: midden stukie037
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

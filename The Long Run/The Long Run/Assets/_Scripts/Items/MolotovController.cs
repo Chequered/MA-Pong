@@ -29,6 +29,7 @@ public class MolotovController : MonoBehaviour {
 
 	private void Explode()
 	{
+		Debug.Log("using item");
 		Instantiate(Data.prefabs.molotovExplosion, transform.position, Data.prefabs.molotovExplosion.transform.rotation);
 		Destroy(this.gameObject);
 	}

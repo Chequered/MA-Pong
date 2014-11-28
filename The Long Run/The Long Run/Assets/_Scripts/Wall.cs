@@ -4,15 +4,21 @@ using System.Collections;
 public class Wall : MonoBehaviour
 {
 	[SerializeField]
-	private float health;
+	public float health;
 	private float totalhealth;
 
 	public GameObject healthBar;
+	public GameObject[] wallStates;
+
+	private int currentWallState;
+	private Healthbar _healthBar;
 
 	private void Start()
 	{
+		currentWallState = 1;
 		totalhealth = health;
-		healthBar.GetComponent<Healthbar>().SetHealth(health);
+		_healthBar = healthBar.GetComponent<Healthbar>();
+		_healthBar.SetHealth(health);
 	}
 
 	public float GetHealth()
@@ -22,7 +28,7 @@ public class Wall : MonoBehaviour
 
 	private void Update()
 	{
-		healthBar.GetComponent<Healthbar>().UpdatePosition(transform.position);
+		_healthBar.UpdatePosition(transform.position);
 		if(Input.GetKeyDown(KeyCode.Q))
 		{
 			DoDamage(50);
@@ -36,12 +42,21 @@ public class Wall : MonoBehaviour
 		{
 			Destroy(this.gameObject);
 		}
-		healthBar.GetComponent<Healthbar>().UpdateBar(health);
+		if(this.health < this.totalhealth / 3 * (wallStates.Length - currentWallState))
+		{
+			foreach(GameObject wall in wallStates)
+			{
+				wall.gameObject.SetActive(false);
+			}
+			currentWallState++;
+			wallStates[currentWallState - 1].gameObject.SetActive(true);
+		}
+		_healthBar.UpdateBar(health);
 	}
 
 	public void Rebuild()
 	{
 		this.health = totalhealth;
-		healthBar.GetComponent<Healthbar>().UpdateBar(health);
+		_healthBar.UpdateBar(health);
 	}
 }
