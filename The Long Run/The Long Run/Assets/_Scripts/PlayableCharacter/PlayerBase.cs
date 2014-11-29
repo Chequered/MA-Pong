@@ -12,6 +12,7 @@ public enum GameCharacter
 public class PlayerBase : MonoBehaviour {
 
 	public int totalHealth;
+	public float health;
 	public float movementSpeed;
 	public float shootingSpeed;
 	public float damage;

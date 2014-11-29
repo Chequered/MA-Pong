@@ -4,7 +4,7 @@ using System.Collections;
 public class Wall : MonoBehaviour
 {
 	[SerializeField]
-	private float health;
+	public float health;
 	private float totalhealth;
 
 	public GameObject healthBar;
