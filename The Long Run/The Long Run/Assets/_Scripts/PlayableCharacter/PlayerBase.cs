@@ -36,18 +36,31 @@ public class PlayerBase : MonoBehaviour {
 	{
 		GC = GameController.GC;
 		audioSources = GetComponents<AudioSource>();
+		if(ID == 1)
+		{
+			if(PlayerPrefs.GetString("p1Keyboard") == "true")
+			{
+				usingController = false;
+			}
+		}
 	}
 
 	private void Update()
 	{
+		usingController = false;
 		if(con)
 		{
 			if(usingController)
 			{
 				RotateToAxis();
-				MoveToAxis();
 			}else{
 				RotateToMouse();
+			}
+			if(ID == 1 && !usingController)
+			{
+				MoveToKeys();
+			}else{
+				MoveToAxis();
 			}
 			GetInput();
 		}
@@ -56,6 +69,14 @@ public class PlayerBase : MonoBehaviour {
 	private void MoveToAxis()
 	{
 		moveDirection = new Vector3(Input.GetAxis("Horizontal" + ID), 0, Input.GetAxis("Vertical" + ID));
+		moveDirection = transform.parent.transform.TransformDirection(moveDirection);
+		moveDirection *= movementSpeed;
+		con.SimpleMove(moveDirection * Time.deltaTime);
+	}
+
+	private void MoveToKeys()
+	{
+		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 		moveDirection = transform.parent.transform.TransformDirection(moveDirection);
 		moveDirection *= movementSpeed;
 		con.SimpleMove(moveDirection * Time.deltaTime);

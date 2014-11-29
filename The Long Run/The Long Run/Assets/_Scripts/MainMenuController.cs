@@ -18,13 +18,14 @@ public class MainMenuController : MonoBehaviour {
 		if(GUI.Button(new Rect(Screen.width / 2 - normButtonWidth / 2, 150, normButtonWidth, 50), "Start"))
 		{
 			PlayerPrefs.SetInt("playerCount", playerCount);
+			PlayerPrefs.SetString("p1Keyboard", "" + keyboard);
 			Application.LoadLevel("charSelect");
 		}
 		GUI.Label(new Rect(Screen.width / 2 - normButtonWidth / 2, 265, normButtonWidth, 50), "" + playerCount);
 		GUI.Label(new Rect(Screen.width / 2 - normButtonWidth, 265, normButtonWidth, 50), "Players: ");
 		if(GUI.Button(new Rect(Screen.width / 2 - normButtonWidth / 2 + 50, 230, normButtonWidth - 50, 50), "+1"))
 		{
-			if(playerCount < 4)
+			if(playerCount < 3)
 			{
 				playerCount++;
 			}

@@ -1,0 +1,127 @@
+fileFormatVersion: 2
+guid: 9f0e7697659919e46876357b5f712ba2
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: body_buik
+    100002: body_hoed
+    100004: body_hoofd
+    100006: body_shoulderpads_1
+    100008: body_shoulderpads_2
+    100010: L_arm_bovenarm_R1
+    100012: L_arm_onderarm_R
+    100014: L_been_bovenbeen_R1
+    100016: L_been_onderbeen_R1
+    100018: R_arm__bovenarm_R
+    100020: R_arm__onderarm_R1
+    100022: R_been_bovenbeen_R
+    100024: R_been_onderbeen_R
+    100026: //RootNode
+    400000: body_buik
+    400002: body_hoed
+    400004: body_hoofd
+    400006: body_shoulderpads_1
+    400008: body_shoulderpads_2
+    400010: L_arm_bovenarm_R1
+    400012: L_arm_onderarm_R
+    400014: L_been_bovenbeen_R1
+    400016: L_been_onderbeen_R1
+    400018: R_arm__bovenarm_R
+    400020: R_arm__onderarm_R1
+    400022: R_been_bovenbeen_R
+    400024: R_been_onderbeen_R
+    400026: //RootNode
+    2300000: body_buik
+    2300002: body_hoed
+    2300004: body_hoofd
+    2300006: body_shoulderpads_1
+    2300008: body_shoulderpads_2
+    2300010: L_arm_bovenarm_R1
+    2300012: L_arm_onderarm_R
+    2300014: L_been_bovenbeen_R1
+    2300016: L_been_onderbeen_R1
+    2300018: R_arm__bovenarm_R
+    2300020: R_arm__onderarm_R1
+    2300022: R_been_bovenbeen_R
+    2300024: R_been_onderbeen_R
+    3300000: body_buik
+    3300002: body_hoed
+    3300004: body_hoofd
+    3300006: body_shoulderpads_1
+    3300008: body_shoulderpads_2
+    3300010: L_arm_bovenarm_R1
+    3300012: L_arm_onderarm_R
+    3300014: L_been_bovenbeen_R1
+    3300016: L_been_onderbeen_R1
+    3300018: R_arm__bovenarm_R
+    3300020: R_arm__onderarm_R1
+    3300022: R_been_bovenbeen_R
+    3300024: R_been_onderbeen_R
+    4300000: body_buik
+    4300002: body_hoed
+    4300004: body_hoofd
+    4300006: body_shoulderpads_1
+    4300008: body_shoulderpads_2
+    4300010: L_arm_bovenarm_R1
+    4300012: L_arm_onderarm_R
+    4300014: L_been_bovenbeen_R1
+    4300016: L_been_onderbeen_R1
+    4300018: R_arm__bovenarm_R
+    4300020: R_arm__onderarm_R1
+    4300022: R_been_bovenbeen_R
+    4300024: R_been_onderbeen_R
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

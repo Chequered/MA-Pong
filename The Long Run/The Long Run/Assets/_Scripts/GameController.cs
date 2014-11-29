@@ -29,7 +29,6 @@ public class GameController : MonoBehaviour
 		{
 			if(PlayerPrefs.HasKey("" + (i + 1)))
 			{
-				Debug.Log(PlayerPrefs.GetString("" + (i + 1)));
 				if(PlayerPrefs.GetString("" + (i + 1)) == "Fidel Castro")
 				{
 					GameObject player = Instantiate(Data.prefabs.player_Castro, playerSpawnPoints[i].transform.position, Data.prefabs.player_Castro.transform.rotation) as GameObject;
@@ -47,12 +46,6 @@ public class GameController : MonoBehaviour
 					GameObject player = Instantiate(Data.prefabs.player_Lenin, playerSpawnPoints[i].transform.position, Data.prefabs.player_Lenin.transform.rotation) as GameObject;
 					player.GetComponent<PlayerReference>().player.GetComponent<PlayerBase>().SetID(i + 1);
 					player.GetComponent<PlayerReference>().player.GetComponent<PlayerBase>().SetCharacter(GameCharacter.Lenin);
-				}
-				if(PlayerPrefs.GetString("" + (i + 1)) == "Kim Jong Un")
-				{
-					GameObject player = Instantiate(Data.prefabs.player_Un, playerSpawnPoints[i].transform.position, Data.prefabs.player_Un.transform.rotation) as GameObject;
-					player.GetComponent<PlayerReference>().player.GetComponent<PlayerBase>().SetID(i + 1);
-					player.GetComponent<PlayerReference>().player.GetComponent<PlayerBase>().SetCharacter(GameCharacter.Un);
 				}
 			}
 		}

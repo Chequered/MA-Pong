@@ -21,12 +21,10 @@ public class CharSelectController : MonoBehaviour {
 		Character castro = new Character(Data.prefabs.preview_Castro, Data.prefabs.preview_Castro_taken,"Fidel Castro", "DESC");
 		Character stalin = new Character(Data.prefabs.preview_Stalin, Data.prefabs.preview_Stalin_taken,"Joseph Stalin", "DESC");
 		Character lenin = new Character(Data.prefabs.preview_Lenin, Data.prefabs.preview_Lenin_taken,"Vladimir Lenin", "DESC");
-		Character kim = new Character(Data.prefabs.preview_Lenin, Data.prefabs.preview_Lenin_taken,"Kim Jong Un", "DESC");
 
 		characters.Add(castro);
 		characters.Add(stalin);
 		characters.Add(lenin);	
-		characters.Add(kim);
 
 		charWidth = Screen.width / (characters.Count + 0.5f);
 	}
@@ -71,6 +69,7 @@ public class CharSelectController : MonoBehaviour {
 			if(GUI.Button(new Rect(Screen.width / 2 - 70 - 70, Screen.height - 100, 100, 40), "Clear"))
 			{
 				Application.LoadLevel("charSelect");
+				PlayerPrefs.SetString("p1Keyboard", PlayerPrefs.GetString("p1Keyboard"));
 			}
 		}else{
 			GUI.Label(new Rect(Screen.width / 2 - 300 / 2, 25, 300, 50), "Player " + (playersDone + 1) + "/" + playerCount +" Select a character");
